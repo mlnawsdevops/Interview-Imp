@@ -23,6 +23,7 @@
       - botocore
       executable: pip3.9
 
+  #creating aws-ec2-instance
   - name: create ec2 instance
     amazon.aws.ec2_instance: #module for aws ec2_instances
       name: "{{ item }}"
@@ -38,7 +39,7 @@
     ansible.builtin.debug:
       msg: "{{ec2_instances}}"
 
-  #print the r53 private records   
+  #creating the r53 private records   
   - name: create r53 private records
     amazon.aws.route53:
       state: present
@@ -52,11 +53,12 @@
     loop: "{{ec2_instances.results}}"
     register: private_records
 
+  #print the r53 private record
   - name: print the private r53 output
     ansible.builtin.debug:
       msg: "{{private_records}}"
 
-  #print the r53 public record
+  #creating the r53 public record
   - name: create r53 public record
     amazon.aws.route53:
       state: present
@@ -71,6 +73,7 @@
     when: item.item == "frontend" #when keyword should not have {{ }}
     register: public_records
 
+  #print the r53 public record
   - name: print the output of public record
     ansible.builtin.debug:
       msg: "{{public_records}}"
