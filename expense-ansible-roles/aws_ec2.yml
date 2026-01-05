@@ -1,3 +1,6 @@
+#ansible-dynamic-inventory: fetching 30 servers private ip addresses
+#ansible-inventory -i aws_ec2.yml --graph
+
 plugin: amazon.aws.aws_ec2
 regions:
 - us-east-1 

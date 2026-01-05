@@ -1,7 +1,7 @@
 - name: install nginx server
   hosts: all
   become: yes
-  serial: 3
+  serial: 3 #connects 3servers from n-servers and connect-3 servers + task-1 on 3servers + task-2 on 3servers...repeat same steps till n-servers
   tasks: 
   - name: install nginx
     ansible.builtin.package:

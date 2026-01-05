@@ -1,0 +1,17 @@
+Ansible-vault
+===============
+ansible-vault create credentials_mysql.yaml
+ansible-vault view credentials_mysql.yaml
+ansible-vault edit credentials_mysql.yaml
+
+Ansible dynamic inventory
+==========================
+ansible-inventory -i aws_ec2.yaml --graph
+
+Ansible tags
+===============
+ansible-playbook backend.yaml -t deployment
+
+public and private pem key creation
+=======================================
+ssh-keygen -f ansible_key
